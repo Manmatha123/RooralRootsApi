@@ -23,7 +23,7 @@ import com.ecommerce.ecommerce.users.service.UserService;
 
 
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*",maxAge = 3600)
 @RestController
 @RequestMapping("/v1/api/user")
 public class UserController {

@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
                     userDTO.getId() != null ? userDTO.getId() : -1);
 
             if (nameExists) {
-                return new Status(false, "user already exists");
+                return new Status(false, "phone already exists");
             }
             User user = new User();
             if (userDTO.getId() == null) {

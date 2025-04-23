@@ -28,19 +28,18 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
                         .requestMatchers("/v1/api/user/saveorupdate","/v1/api/user/signin").permitAll()
-                       
+                        .requestMatchers("/v1/api/store/category/list",
+                        "/v1/api/store/list/place/{place}","/v1/api/user/info",
+                        "/v1/api/store/list/type/{type}","/v1/api/user/update"
+                        ).hasRole("buyer")
+
                         .requestMatchers("/v1/api/user/profile","/v1/api/user/list",
                         "/v1/api/store/id/{id}","/v1/api/store/saveorupdate","/v1/api/store/user/id/{id}","/v1/api/product/bill"
                         ,"/v1/api/product/saveorupdate","/v1/api/product/delete/id/{id}","/v1/api/product/list","/v1/api/product/id/{id}",
                         "/v1/api/order/saveorupdate","/v1/api/user/info","/v1/api/user/update","/v1/api/store/info","/v1/api/product/list/name/{name}"
-                        ).hasRole("ADMIN")
+                        ).hasRole("seller")
                         
-                        .requestMatchers("/v1/api/store/category/list",
-                        "/v1/api/store/list/place/{place}","/v1/api/user/info",
-                        "/v1/api/store/list/type/{type}","/v1/api/user/update"
-                        
-                       
-                        ).hasRole("USER")
+
 
                         .anyRequest().authenticated())
                         .csrf(AbstractHttpConfigurer::disable);
