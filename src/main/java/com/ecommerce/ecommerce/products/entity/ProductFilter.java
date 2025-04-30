@@ -11,10 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductFilter {
 
-
     private String name;
     private Category category;
     private String location;
     private Double price;
-    
+      
 }

@@ -30,15 +30,15 @@ public class Product {
     private String image;
     private String name;
     private Double price;
+    private Long deliverPrice;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-    private String descripton;
-    private Float quantity;
+    private String description;
     private String sellunit;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "seller_id")
     private User seller;
 
@@ -48,7 +48,7 @@ public class Product {
         this.name = product.getName();
         this.price = product.getPrice();
         this.category = product.getCategory();
-        this.descripton = product.getDescripton();
+        this.description = product.getDescription();
         this.sellunit = product.getSellunit();
     }
 

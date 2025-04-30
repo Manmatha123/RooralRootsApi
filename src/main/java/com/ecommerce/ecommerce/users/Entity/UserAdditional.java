@@ -20,8 +20,10 @@ public class UserAdditional {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
-    private boolean onlineOrder;
-    private Long deliveryCharge;
+    private boolean customorder;
+    private Long customizeOrderPrice;
+
+
 
 
     

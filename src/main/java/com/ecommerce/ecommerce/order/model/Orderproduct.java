@@ -3,7 +3,6 @@ package com.ecommerce.ecommerce.order.model;
 
 import com.ecommerce.ecommerce.products.entity.Product;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

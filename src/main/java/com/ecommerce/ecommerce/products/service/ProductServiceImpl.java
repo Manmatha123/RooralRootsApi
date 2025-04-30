@@ -78,7 +78,7 @@ public class ProductServiceImpl implements ProductService {
             Product product = new Product();
             if (productDTO.getId() == null) {
                 product.setCategory(productDTO.getCategory());
-                product.setDescripton(productDTO.getDescripton());
+                product.setDescription(productDTO.getDescription());
                 product.setName(productDTO.getName());
                 product.setId(productDTO.getId());
                 product.setPrice(productDTO.getPrice());
@@ -107,10 +107,12 @@ public class ProductServiceImpl implements ProductService {
         return productRepo.findById(productDTO.getId())
                 .map(product -> {
                     product.setCategory(productDTO.getCategory());
-                    product.setDescripton(productDTO.getDescripton());
+                    product.setDescription(productDTO.getDescription());
                     product.setName(productDTO.getName());
                     product.setPrice(productDTO.getPrice());
                     product.setSellunit(productDTO.getSellunit());
+                    product.setDeliverPrice(productDTO.getDeliverPrice());
+
                     try {
                         if(file!=null && !file.isEmpty()){
                             String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -158,6 +160,8 @@ return new Status(true,"Product placed");
          Long categoryId=filter.getCategory()!=null?filter.getCategory().getId():null;
         return productRepo.filterProduct(name,price,categoryId,location);
     }
+
+
 
 
 

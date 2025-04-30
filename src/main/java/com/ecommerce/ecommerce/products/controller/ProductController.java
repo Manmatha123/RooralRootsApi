@@ -31,7 +31,7 @@ public class ProductController {
 @Autowired
 private ProductService pService;
 
-@GetMapping(value="/list")
+@GetMapping(value="/owner-products")
 public List<Product> listByStoreId(){
     return pService.listByStoreId();
 }
@@ -71,4 +71,9 @@ public List<Product> listByStoreId(){
     public List<ProductProj> frilterProduct(@RequestBody ProductFilter filter){
         return pService.frilterProduct(filter);
     }
+
+
+
+
+
 }

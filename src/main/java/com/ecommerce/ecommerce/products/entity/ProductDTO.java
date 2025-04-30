@@ -17,7 +17,8 @@ public class ProductDTO {
     private String name;
     private Double price;
     private Category category;
-    private String descripton;
+    private String description;
+    private Long deliverPrice;
     private String sellunit;
     private User seller;
 
@@ -27,7 +28,8 @@ public class ProductDTO {
         this.name = product.getName();
         this.price = product.getPrice();
         this.category = product.getCategory();
-        this.descripton = product.getDescripton();
+        this.description = product.getDescription();
         this.sellunit = product.getSellunit();
+        this.deliverPrice=product.getDeliverPrice();
     }
 }

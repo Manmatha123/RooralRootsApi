@@ -7,13 +7,10 @@ public interface ProductProj {
      Long getId();
      String getImage();
      String getName();
-     boolean available();
      Double getPrice();
-     String getDiscount();
-     String getBrand();
      Category getCategory();
-     String getDescripton();
-     Float getQuantity();
+     String getDescription();
      String getSellunit();
      User getSeller(); 
+     Long getDeliverPrice();
 }
