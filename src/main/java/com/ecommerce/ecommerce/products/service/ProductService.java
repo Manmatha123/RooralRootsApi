@@ -29,5 +29,7 @@ public interface ProductService {
 
     List<ProductProj> frilterProduct(ProductFilter filter);
 
+    List<Product> fetchSellerProducts(Long id);
+
 
 }

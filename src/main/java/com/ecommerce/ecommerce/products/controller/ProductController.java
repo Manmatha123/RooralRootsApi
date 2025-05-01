@@ -23,7 +23,7 @@ import com.ecommerce.ecommerce.products.entity.ProductFilter;
 import com.ecommerce.ecommerce.products.entity.ProductProj;
 import com.ecommerce.ecommerce.products.service.ProductService;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*",maxAge = 3600)
 @RestController
 @RequestMapping("/v1/api/product")
 public class ProductController {
@@ -71,9 +71,4 @@ public List<Product> listByStoreId(){
     public List<ProductProj> frilterProduct(@RequestBody ProductFilter filter){
         return pService.frilterProduct(filter);
     }
-
-
-
-
-
 }

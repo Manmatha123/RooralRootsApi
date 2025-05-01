@@ -155,10 +155,16 @@ return new Status(true,"Product placed");
     public List<ProductProj> frilterProduct(ProductFilter filter) {
      
         String name=filter.getName()!=null?filter.getName():null;
-        Double price=filter.getPrice()!=null?filter.getPrice():null;
+        Double maxPrice=filter.getMaxPrice()!=null?filter.getMaxPrice():null;
+        Double minPrice=filter.getMinPrice()!=null?filter.getMinPrice():null;
          String location=filter.getLocation()!=null?filter.getLocation():null;
          Long categoryId=filter.getCategory()!=null?filter.getCategory().getId():null;
-        return productRepo.filterProduct(name,price,categoryId,location);
+        return productRepo.filterProduct(name,minPrice,maxPrice,categoryId,location);
+    }
+
+    @Override
+    public List<Product> fetchSellerProducts(Long id) {
+      return productRepo.findAllBySeller_id(id);
     }
 
 

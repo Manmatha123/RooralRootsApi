@@ -22,9 +22,5 @@ public class UserAdditional {
     private Long id;
     private boolean customorder;
     private Long customizeOrderPrice;
-
-
-
-
-    
+  
 }

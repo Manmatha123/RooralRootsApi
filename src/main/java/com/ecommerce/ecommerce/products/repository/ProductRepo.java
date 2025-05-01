@@ -19,8 +19,8 @@ public interface ProductRepo extends JpaRepository<Product,Long>{
     "WHERE (:term IS NULL OR LOWER(p.name) LIKE CONCAT('%', LOWER(:term), '%')) " +
     "AND (:categoryId IS NULL OR p.category.id = :categoryId ) " +
     "AND (:location IS NULL OR LOWER(p.seller.locality) LIKE CONCAT('%', LOWER(:location), '%')) " +
-    "AND (:price IS NULL OR p.price BETWEEN 0 AND :price)")
-List<ProductProj> filterProduct(String term, Double price,Long categoryId,String location);
+    "AND (:minPrice IS NULL OR :maxPrice IS NULL OR p.price BETWEEN :minPrice AND :maxPrice)")
+List<ProductProj> filterProduct(String term, Double minPrice,Double maxPrice,Long categoryId,String location);
     // List<Product> findAllByStore_place(String place);
     Optional<Product> findAllBySeller_idAndNameContainingIgnoreCase(Long id, String name);
     List<Product> findAllBySeller_id(Long id);

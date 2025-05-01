@@ -22,7 +22,11 @@ public class OrderDto {
     private Float finalprice;
     private String orderid;
     private String status="PENDING";
-    private boolean onlineDeliver;
+    private String locality;
+    private String city;
+    private String state;
+    private String district;
+    private String pincode;
 
     public OrderDto(Order order){
         this.id = order.getId();
@@ -33,7 +37,11 @@ public class OrderDto {
         this.orderProducts = order.getOrderProducts();
         this.orderid = order.getOrderid();
         this.status = order.getStatus();
-        this.onlineDeliver = order.isOnlineDeliver();
+        this.state = order.getState();
+        this.city = order.getCity();
+        this.district = order.getDistrict();
+        this.locality = order.getLocality();
+        this.pincode = order.getPincode();
     }
 
 

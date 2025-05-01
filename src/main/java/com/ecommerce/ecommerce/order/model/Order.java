@@ -45,7 +45,12 @@ public class Order {
     
     private Date orderdate;
     private Float finalprice;
-    private boolean onlineDeliver;
+
+    private String locality;
+    private String city;
+    private String state;
+    private String district;
+    private String pincode;
 
     private String orderid;
     private String status="pending";
@@ -59,7 +64,12 @@ public class Order {
         this.orderProducts = order.getOrderProducts();
         this.orderid = order.getOrderid();
         this.status = order.getStatus();
-        this.onlineDeliver = order.isOnlineDeliver();
+        this.state = order.getState();
+        this.city = order.getCity();
+        this.district = order.getDistrict();
+        this.locality = order.getLocality();
+        this.pincode = order.getPincode();
+        
     }
 
     // public Order(Order order) {
