@@ -38,7 +38,7 @@ public class SecurityConfig {
                     "/v1/api/store/id/{id}", "/v1/api/store/saveorupdate", "/v1/api/store/user/id/{id}",
                     "/v1/api/product/bill", "/v1/api/product/saveorupdate", "/v1/api/product/delete/id/{id}",
                     "/v1/api/product/list",
-                     "/v1/api/store/info",
+                     "/v1/api/store/info","/v1/api/order/status/id/{id}/{status}",
                     "/v1/api/product/list/name/{name}")
             .hasRole("seller")
 

@@ -17,5 +17,7 @@ public interface OrderService {
     List<OrderDto> listByStoreId(Long id);
 
     List<OrderDto> listByUserId(Long id);
+
+    Status updateStatus(Long id,String status);
     
 }

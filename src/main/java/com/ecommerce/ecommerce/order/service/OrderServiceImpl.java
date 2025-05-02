@@ -76,6 +76,14 @@ public class OrderServiceImpl implements OrderService{
         }
     }
 
+    @Override
+    public Status updateStatus(Long id, String status) {
+      Order order=orderRepo.findById(id).get();
+      order.setStatus(status);
+      orderRepo.save(order);
+      return new Status(true,"Status Updated to "+status);
+    }
+
 
     
 }

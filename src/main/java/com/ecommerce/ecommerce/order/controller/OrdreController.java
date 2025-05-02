@@ -50,4 +50,9 @@ public class OrdreController {
     public Status deleteById(@PathVariable Long id) {
         return orderService.deleteOrderById(id);
     }
+
+    @GetMapping(value = "/status/id/{id}/{status}")
+    public Status updateStatus(@PathVariable Long id,@PathVariable String status) {
+        return orderService.updateStatus(id,status);
+    }
 }
