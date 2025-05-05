@@ -21,7 +21,9 @@ public class UserDTO {
     private UserAdditional userAdditional;
 
     public UserDTO(User user){
-        this.id=user.getId();
+        if(user.getId()!=null){
+            this.id=user.getId();
+        }
         this.name=user.getName();
         this.phone=user.getPhone();
         this.profileimage=user.getProfileimage();

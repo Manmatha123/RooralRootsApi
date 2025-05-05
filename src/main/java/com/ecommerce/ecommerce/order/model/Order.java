@@ -57,8 +57,8 @@ public class Order {
 
     public Order(OrderDto order) {
         this.id = order.getId();
-        this.seller = new User(order.getBuyer());
-        this.buyer = new User(order.getSeller());
+        this.seller = new User(order.getSeller());
+        this.buyer = new User(order.getBuyer());
         this.finalprice = order.getFinalprice();
         this.orderdate = order.getOrderdate();
         this.orderProducts = order.getOrderProducts();

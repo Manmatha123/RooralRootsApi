@@ -53,7 +53,6 @@ public class CustomizeOrderServiceImpl implements CustomizeOrderService{
             }
             CustomizeOrder order = new CustomizeOrder();
             if (productDTO.getId() == null) {
-                productDTO.setBuyer(new UserDTO(user));
                 order=new CustomizeOrder(productDTO);
                order.setBuyer(user);
                 String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -63,7 +62,7 @@ public class CustomizeOrderServiceImpl implements CustomizeOrderService{
                 }
             }
             cOrderRepo.save(order);
-            return new Status(true, productDTO.getId() == null ? "successfuly added" : "update successfuly");
+            return new Status(true, productDTO.getId() == null ? "successfuly receive order" : "update successfuly");
         } catch (Exception e) {
             return new Status(false, "An error occurred");
         }

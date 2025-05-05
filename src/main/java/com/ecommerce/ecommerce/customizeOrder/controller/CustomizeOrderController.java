@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.ecommerce.ecommerce.customizeOrder.model.CustomizeOrderDTO;
 import com.ecommerce.ecommerce.customizeOrder.service.CustomizeOrderService;
 import com.ecommerce.ecommerce.global.Status;
 
+@CrossOrigin(origins = "*",maxAge = 3600)
 @RestController
 @RequestMapping("/v1/custom-order")
 public class CustomizeOrderController {

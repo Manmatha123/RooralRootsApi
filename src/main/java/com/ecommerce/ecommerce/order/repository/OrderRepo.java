@@ -10,7 +10,7 @@ import com.ecommerce.ecommerce.order.model.Order;
 @Repository
 public interface OrderRepo extends JpaRepository<Order,Long>{
 
-    List<Order> findAllBySeller_id(Long id);
+    List<Order> findAllBySeller_idOrderByOrderdateDesc(Long id);
 
     List<Order> findAllByBuyer_id(Long id);
     

@@ -21,7 +21,13 @@ public class CustomizeOrderDTO {
     private Float totalprice;
     private String orderid;
     private String description;
-    private String status="PENDING";
+    private String status="pending";
+
+    private String locality;
+    private String city;
+    private String state;
+    private String district;
+    private String pincode;
 
         public CustomizeOrderDTO(CustomizeOrder order) {
         this.id = order.getId();
@@ -34,5 +40,11 @@ public class CustomizeOrderDTO {
         this.image=order.getImage();
         this.qty=order.getQty();
         this.description=order.getDescription();
+        this.locality=order.getLocality();
+        this.city=order.getCity();
+        this.state=order.getState();
+        this.district=order.getDistrict();
+        this.pincode=order.getPincode();
+
     }
 }

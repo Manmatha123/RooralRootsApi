@@ -26,11 +26,11 @@ public class CustomizeOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "buyer_id")
     private User buyer;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "seller_id")
     private User seller;
 
@@ -41,7 +41,13 @@ public class CustomizeOrder {
     private Float totalprice;
     private String orderid;
     private String description;
-    private String status="PENDING";
+    private String status="pending";
+
+    private String locality;
+    private String city;
+    private String state;
+    private String district;
+    private String pincode;
 
     public CustomizeOrder(CustomizeOrderDTO order) {
         this.id = order.getId();
@@ -54,6 +60,11 @@ public class CustomizeOrder {
         this.image=order.getImage();
         this.qty=order.getQty();
         this.description=order.getDescription();
+        this.locality=order.getLocality();
+        this.city=order.getCity();
+        this.state=order.getState();
+        this.district=order.getDistrict();
+        this.pincode=order.getPincode();
     }
 
 }

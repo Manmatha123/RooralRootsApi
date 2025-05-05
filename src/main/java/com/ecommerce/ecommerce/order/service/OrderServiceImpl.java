@@ -42,7 +42,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public List<OrderDto> listByStoreId(Long id) {
-        return orderRepo.findAllBySeller_id(id).stream().map(OrderDto::new).toList();
+        return orderRepo.findAllBySeller_idOrderByOrderdateDesc(id).stream().map(OrderDto::new).toList();
     }
 
     @Override

@@ -47,6 +47,9 @@ public class User {
         }
     }
     public User(UserDTO user){
+        if(user.getId()!=null){
+            this.id=user.getId();
+        }
         this.name=user.getName();
         this.phone=user.getPhone();
         this.profileimage=user.getProfileimage();

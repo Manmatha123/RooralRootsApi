@@ -30,8 +30,8 @@ public class OrderDto {
 
     public OrderDto(Order order){
         this.id = order.getId();
-        this.seller = new UserDTO(order.getBuyer());
-        this.buyer = new UserDTO(order.getSeller());
+        this.seller = new UserDTO(order.getSeller());
+        this.buyer = new UserDTO(order.getBuyer());
         this.finalprice = order.getFinalprice();
         this.orderdate = order.getOrderdate();
         this.orderProducts = order.getOrderProducts();
