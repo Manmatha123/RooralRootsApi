@@ -16,4 +16,6 @@ public interface CustomizeOrderService {
 
     Status saveOrUpdate(CustomizeOrderDTO order, MultipartFile file);
 
+    List<CustomizeOrder> listByBuyerId(Long buyerid);
+
 }

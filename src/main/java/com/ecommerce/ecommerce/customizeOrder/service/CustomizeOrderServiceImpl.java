@@ -23,16 +23,13 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class CustomizeOrderServiceImpl implements CustomizeOrderService{
- 
-    
+public class CustomizeOrderServiceImpl implements CustomizeOrderService {
+
     @Autowired
     CustomizeOrderRepo cOrderRepo;
 
     @Autowired
     UserRepo userRepo;
-
-
 
     @Override
     public CustomizeOrderDTO findByProductId(Long id) {
@@ -40,21 +37,19 @@ public class CustomizeOrderServiceImpl implements CustomizeOrderService{
                 .orElseThrow(() -> new EntityNotFoundException("order not found with ID: " + id));
     }
 
-
-
     @Override
     public Status saveOrUpdate(CustomizeOrderDTO productDTO, MultipartFile file) {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             User user = userRepo.findByPhone(authentication.getName());
-         
-            if(!authentication.isAuthenticated()){
+
+            if (!authentication.isAuthenticated()) {
                 return new Status(false, "Login Before Order!");
             }
             CustomizeOrder order = new CustomizeOrder();
             if (productDTO.getId() == null) {
-                order=new CustomizeOrder(productDTO);
-               order.setBuyer(user);
+                order = new CustomizeOrder(productDTO);
+                order.setBuyer(user);
                 String fileName = StringUtils.cleanPath(file.getOriginalFilename());
                 if (!fileName.contains("..")) {
 
@@ -71,9 +66,16 @@ public class CustomizeOrderServiceImpl implements CustomizeOrderService{
     @Override
     public List<CustomizeOrder> listByStoreId(Long ownerId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User seller=userRepo.findByPhone(authentication.getName());
-        List<CustomizeOrder>  productlist=cOrderRepo.findAllBySeller_id(seller.getId());
+        User seller = userRepo.findByPhone(authentication.getName());
+        List<CustomizeOrder> productlist = cOrderRepo.findAllBySeller_id(seller.getId());
         return productlist;
+    }
+
+    @Override
+    public List<CustomizeOrder> listByBuyerId(Long buyerid) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User buyer = userRepo.findByPhone(authentication.getName());
+        return cOrderRepo.findAllByBuyer_id(buyer.getId());
     }
 
 }

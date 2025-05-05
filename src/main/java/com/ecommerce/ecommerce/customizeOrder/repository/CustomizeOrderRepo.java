@@ -11,5 +11,7 @@ import com.ecommerce.ecommerce.customizeOrder.model.CustomizeOrder;
 public interface CustomizeOrderRepo extends JpaRepository<CustomizeOrder,Long>{
 
     List<CustomizeOrder> findAllBySeller_id(Long id);
+
+    List<CustomizeOrder> findAllByBuyer_id(Long id);
     
 }

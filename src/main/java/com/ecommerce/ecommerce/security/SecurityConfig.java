@@ -27,33 +27,30 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
 
-        // Buyer routes come after seller routes
-        // Buyer routes come after seller routes
-            // Common routes for both buyer and seller
-            .requestMatchers("/v1/api/user/info", "/v1/api/user/update","/v1/api/order/saveorupdate","/v1/custom-order/saveorupdate")
-            .hasAnyRole("buyer", "seller")
+                // Buyer routes come after seller routes
+                // Buyer routes come after seller routes
+                // Common routes for both buyer and seller
+                .requestMatchers("/v1/api/user/info", "/v1/api/user/update", "/v1/api/order/saveorupdate",
+                        "/v1/custom-order/saveorupdate")
+                .hasAnyRole("buyer", "seller")
 
-            // Seller-specific routes
-            .requestMatchers("/v1/api/user/profile", "/v1/api/user/list",
-                    "/v1/api/store/id/{id}", "/v1/api/store/saveorupdate", "/v1/api/store/user/id/{id}",
-                    "/v1/api/product/bill", "/v1/api/product/saveorupdate", "/v1/api/product/delete/id/{id}",
-                    "/v1/api/product/list","/v1/custom-order/list/owner/{id}",
-                     "/v1/api/store/info","/v1/api/order/status/id/{id}/{status}",
-                    "/v1/api/product/list/name/{name}")
-            .hasRole("seller")
+                // Seller-specific routes
+                .requestMatchers("/v1/api/user/profile", "/v1/api/user/list",
+                        "/v1/api/product/bill", "/v1/api/product/saveorupdate", "/v1/api/product/delete/id/{id}",
+                        "/v1/api/product/list", "/v1/custom-order/list/owner/{ownerId}",
+                        "/v1/api/order/status/id/{id}/{status}",
+                        "/v1/api/product/list/name/{name}")
+                .hasRole("seller")
 
-            // Buyer-specific routes
-            .requestMatchers("/v1/api/store/category/list",
-                    "/v1/api/store/list/place/{place}", "/v1/api/store/list/type/{type}")
-            .hasRole("buyer")
+                // Buyer-specific routes
+                .requestMatchers("/v1/custom-order/list/buyer/{buyerid}")
+                .hasRole("buyer")
 
-
-
-
-// Public routes
-.requestMatchers("/v1/api/user/saveorupdate", "/v1/api/user/signin" ).permitAll()
-.requestMatchers("v1/public/api/product/filter", "/v1/api/categories/list","/v1/api/user/id/{id}","/v1/api/product/id/{id}","/v1/public/api/product/seller-products/id/{id}").permitAll()
-
+                // Public routes
+                .requestMatchers("/v1/api/user/saveorupdate", "/v1/api/user/signin").permitAll()
+                .requestMatchers("v1/public/api/product/filter", "/v1/api/categories/list", "/v1/api/user/id/{id}",
+                        "/v1/api/product/id/{id}", "/v1/public/api/product/seller-products/id/{id}")
+                .permitAll()
 
                 .anyRequest().authenticated())
                 .csrf(AbstractHttpConfigurer::disable);

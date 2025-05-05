@@ -20,30 +20,33 @@ import com.ecommerce.ecommerce.customizeOrder.model.CustomizeOrderDTO;
 import com.ecommerce.ecommerce.customizeOrder.service.CustomizeOrderService;
 import com.ecommerce.ecommerce.global.Status;
 
-@CrossOrigin(origins = "*",maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/v1/custom-order")
 public class CustomizeOrderController {
-    
-      
-@Autowired
-private CustomizeOrderService cOService;
 
-@GetMapping(value="/list/owner/{id}")
-public List<CustomizeOrder> listByStoreId(@PathVariable Long ownerId ){
-    return cOService.listByStoreId(ownerId);
-}
+    @Autowired
+    private CustomizeOrderService cOService;
 
+    @GetMapping(value = "/list/owner/{ownerId}")
+    public List<CustomizeOrder> listByStoreId(@PathVariable Long ownerId) {
+        return cOService.listByStoreId(ownerId);
+    }
     
-    @GetMapping(value="/id/{id}")
-    public CustomizeOrderDTO getById(@PathVariable Long id ){
+    @GetMapping(value = "/list/buyer/{buyerid}")
+    public List<CustomizeOrder> listByBuyerId(@PathVariable Long buyerid) {
+        return cOService.listByBuyerId(buyerid);
+    }
+
+    @GetMapping(value = "/id/{id}")
+    public CustomizeOrderDTO getById(@PathVariable Long id) {
         return cOService.findByProductId(id);
     }
 
     @RequestMapping(value = "/saveorupdate", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Status saveOrUpdateProduct(@RequestPart("product") CustomizeOrderDTO order,@RequestParam(value = "file", required=false)MultipartFile file){
-        return cOService.saveOrUpdate(order,file);
+    public Status saveOrUpdateProduct(@RequestPart("product") CustomizeOrderDTO order,
+            @RequestParam(value = "file", required = false) MultipartFile file) {
+        return cOService.saveOrUpdate(order, file);
     }
-
 
 }
