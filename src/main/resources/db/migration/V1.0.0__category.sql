@@ -1,12 +1,11 @@
+
 CREATE TABLE category (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
 INSERT INTO category (name) VALUES 
-('Vegetables'),
 ('Handicrafts'),
-('Fruits'),
 ('Furniture'),
 ('Clothing'),
 ('Toys'),
@@ -16,4 +15,29 @@ INSERT INTO category (name) VALUES
 ('Art'),
 ('Paperwork'),
 ('Craft Supplies'),
-('Jewelry');
+('Jewelry'),
+('Woodwork'),
+('Pottery'),
+('Textile Crafts'),
+('Leather Goods'),
+('Metal Crafts'),
+('Eco-Friendly Products'),
+('Upcycled Crafts'),
+('Personalized Gifts'),
+('Embroidery'),
+('Macrame'),
+('Beadwork'),
+('Crochet & Knitting'),
+('Terracotta Items'),
+('Resin Art'),
+('Glass Art'),
+('Calligraphy'),
+('Quilting'),
+('DIY Kits'),
+('Woven Baskets'),
+('Custom Stationery'),
+('Hand-painted Items'),
+('Handmade Soaps'),
+('Natural Candles'),
+('Ethnic Wear'),
+('Cultural Artifacts');

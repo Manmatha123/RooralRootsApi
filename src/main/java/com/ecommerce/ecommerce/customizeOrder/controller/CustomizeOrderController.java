@@ -49,4 +49,9 @@ public class CustomizeOrderController {
         return cOService.saveOrUpdate(order, file);
     }
 
+        @GetMapping(value = "/status/id/{id}/{status}")
+    public Status updateStatus(@PathVariable Long id,@PathVariable String status) {
+        return cOService.updateStatus(id,status);
+    }
+
 }

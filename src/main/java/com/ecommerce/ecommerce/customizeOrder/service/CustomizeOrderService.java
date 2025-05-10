@@ -18,4 +18,6 @@ public interface CustomizeOrderService {
 
     List<CustomizeOrder> listByBuyerId(Long buyerid);
 
+    Status updateStatus(Long id, String status);
+
 }

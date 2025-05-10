@@ -3,6 +3,8 @@ package com.ecommerce.ecommerce.products.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,6 +36,11 @@ private ProductService pService;
     @PostMapping("/filter")
     public List<ProductProj> frilterProduct(@RequestBody ProductFilter filter){
         return pService.frilterProduct(filter);
+    }
+
+    @GetMapping("/filter-latest")
+    public Page<ProductProj> frilterLatestProduct(Pageable pageable){
+        return pService.frilterLatestProduct(pageable);
     }
     
     @GetMapping("/seller-products/id/{id}")

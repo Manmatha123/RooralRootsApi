@@ -3,6 +3,8 @@ package com.ecommerce.ecommerce.products.repository;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -24,6 +26,9 @@ List<ProductProj> filterProduct(String term, Double minPrice,Double maxPrice,Lon
     // List<Product> findAllByStore_place(String place);
     Optional<Product> findAllBySeller_idAndNameContainingIgnoreCase(Long id, String name);
     List<Product> findAllBySeller_id(Long id);
+
+
+    Page<ProductProj> findAllByOrderByIdDesc(Pageable pageable);
 
     // List<Product> findAllByStore_user_id(Long id);
 

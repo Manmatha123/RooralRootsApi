@@ -38,7 +38,7 @@ public class SecurityConfig {
                 .requestMatchers("/v1/api/user/profile", "/v1/api/user/list",
                         "/v1/api/product/bill", "/v1/api/product/saveorupdate", "/v1/api/product/delete/id/{id}",
                         "/v1/api/product/list", "/v1/custom-order/list/owner/{ownerId}",
-                        "/v1/api/order/status/id/{id}/{status}",
+                        "/v1/api/order/status/id/{id}/{status}","/v1/custom-order/status/id/{id}/{status}",
                         "/v1/api/product/list/name/{name}")
                 .hasRole("seller")
 
@@ -48,7 +48,7 @@ public class SecurityConfig {
 
                 // Public routes
                 .requestMatchers("/v1/api/user/saveorupdate", "/v1/api/user/signin").permitAll()
-                .requestMatchers("v1/public/api/product/filter", "/v1/api/categories/list", "/v1/api/user/id/{id}",
+                .requestMatchers("v1/public/api/product/filter", "/v1/api/categories/list","/v1/public/api/product/filter-latest", "/v1/api/user/id/{id}",
                         "/v1/api/product/id/{id}", "/v1/public/api/product/seller-products/id/{id}")
                 .permitAll()
 

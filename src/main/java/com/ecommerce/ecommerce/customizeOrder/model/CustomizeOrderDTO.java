@@ -15,6 +15,7 @@ public class CustomizeOrderDTO {
        private Long id;
     private UserDTO buyer;
     private UserDTO seller;
+    private String name;
     private String image;
     private Integer qty;
     private Date orderdate;
@@ -31,13 +32,14 @@ public class CustomizeOrderDTO {
 
         public CustomizeOrderDTO(CustomizeOrder order) {
         this.id = order.getId();
-        this.seller = new UserDTO(order.getBuyer());
-        this.buyer = new UserDTO(order.getSeller());
+        this.seller = new UserDTO(order.getSeller());
+        this.buyer = new UserDTO(order.getBuyer());
         this.totalprice = order.getTotalprice();
         this.orderdate = order.getOrderdate();
         this.orderid = order.getOrderid();
         this.status = order.getStatus();
         this.image=order.getImage();
+        this.name=order.getName();
         this.qty=order.getQty();
         this.description=order.getDescription();
         this.locality=order.getLocality();

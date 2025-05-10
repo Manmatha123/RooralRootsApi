@@ -1,6 +1,7 @@
 package com.ecommerce.ecommerce.customizeOrder.service;
 
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,7 @@ public class CustomizeOrderServiceImpl implements CustomizeOrderService {
             CustomizeOrder order = new CustomizeOrder();
             if (productDTO.getId() == null) {
                 order = new CustomizeOrder(productDTO);
+                order.setOrderdate(new Date());
                 order.setBuyer(user);
                 String fileName = StringUtils.cleanPath(file.getOriginalFilename());
                 if (!fileName.contains("..")) {
@@ -77,5 +79,14 @@ public class CustomizeOrderServiceImpl implements CustomizeOrderService {
         User buyer = userRepo.findByPhone(authentication.getName());
         return cOrderRepo.findAllByBuyer_id(buyer.getId());
     }
+
+    @Override
+    public Status updateStatus(Long id, String status) {
+      CustomizeOrder order=cOrderRepo.findById(id).get();
+      order.setStatus(status);
+      cOrderRepo.save(order);
+      return new Status(true,"Status Updated to "+status);
+    }
+    
 
 }

@@ -1,6 +1,9 @@
 package com.ecommerce.ecommerce.products.service;
 
 import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
 import com.ecommerce.ecommerce.global.Status;
 import com.ecommerce.ecommerce.products.entity.Product;
@@ -30,6 +33,8 @@ public interface ProductService {
     List<ProductProj> frilterProduct(ProductFilter filter);
 
     List<Product> fetchSellerProducts(Long id);
+
+    Page<ProductProj> frilterLatestProduct(Pageable pageable);
 
 
 }

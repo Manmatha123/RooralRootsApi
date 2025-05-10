@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -165,6 +167,11 @@ return new Status(true,"Product placed");
     @Override
     public List<Product> fetchSellerProducts(Long id) {
       return productRepo.findAllBySeller_id(id);
+    }
+
+    @Override
+    public Page<ProductProj> frilterLatestProduct(Pageable pageable) {
+     return productRepo.findAllByOrderByIdDesc(pageable);
     }
 
 

@@ -36,6 +36,7 @@ public class CustomizeOrder {
 
     @Column(columnDefinition = "MEDIUMBLOB")
     private String image;
+    private String name;
     private Integer qty;
     private Date orderdate;
     private Float totalprice;
@@ -51,11 +52,12 @@ public class CustomizeOrder {
 
     public CustomizeOrder(CustomizeOrderDTO order) {
         this.id = order.getId();
-        this.seller = new User(order.getBuyer());
-        this.buyer = new User(order.getSeller());
+        this.seller = new User(order.getSeller());
+        this.buyer = new User(order.getBuyer());
         this.totalprice = order.getTotalprice();
         this.orderdate = order.getOrderdate();
         this.orderid = order.getOrderid();
+        this.name=order.getName();
         this.status = order.getStatus();
         this.image=order.getImage();
         this.qty=order.getQty();
